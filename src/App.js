@@ -5,7 +5,7 @@ import axios from "./axios";
 
 function App() {
 
-    const [videos, setVideos] = useState();
+    const [videos, setVideos] = useState([]);
 
     useEffect(() => {
         async function fetchPosts() {
