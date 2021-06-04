@@ -3,7 +3,7 @@ import "./styles/Video.css";
 import VideoFooter from "./VideoFooter";
 import VideoSidebar from "./VideoSidebar";
 
-const Video = () => {
+const Video = ({url, song, channel, description, likes, shares, messages}) => {
 
     const videoRef = useRef(null);
     const [playing, setPlaying] = useState(false);
@@ -22,15 +22,15 @@ const Video = () => {
 
     return (
         <div className="video">
-            <iframe onClick={handleVideoPress} ref={videoRef} className="video__player" width="500" height="800" src="https://www.youtube-nocookie.com/embed/UfGMj10wOzg?controls=0"
+            <iframe onClick={handleVideoPress} ref={videoRef} className="video__player" width="500" height="800" src={url}
                     title="YouTube video player" frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen>
 
             </iframe>
 
-            <VideoSidebar likes={111} shares={2343} messages={234} />
-            <VideoFooter channel="@rookas" description="This is something new" song="A happy song" />
+            <VideoSidebar likes={likes} shares={shares} messages={messages} />
+            <VideoFooter channel={channel} description={description} song={song} />
 
         </div>
     );
