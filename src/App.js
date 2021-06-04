@@ -1,18 +1,37 @@
 import './App.css';
 import Video from "./components/Video";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import axios from "./axios";
 
 function App() {
+
+    const [videos, setVideos] = useState();
+
+    useEffect(() => {
+        async function fetchPosts() {
+            const response = await axios.get('/v2/posts');
+            setVideos(response.data);
+
+            return response;
+        }
+        fetchPosts().then(r => console.log(r));
+    }, []);
 
 
   return (
     <div className="app">
       <div className="app__videos">
-        <Video url="https://www.youtube-nocookie.com/embed/UfGMj10wOzg?controls=0" likes={100} shares={3324} messages={3432} channel="THIS IS SOMETHING NEW" description="O nice, lets get it started" song="99 problems in react, but aint one!" />
-        <Video url="https://www.youtube.com/embed/l-_JUQIFEec" likes={100} shares={3324} messages={3432} channel="THIS IS SOMETHING NEW" description="O nice, lets get it started" song="99 problems in react, but aint one!"  />
-        <Video url="https://www.youtube-nocookie.com/embed/UfGMj10wOzg?controls=0" likes={100} shares={3324} messages={3432} channel="THIS IS SOMETHING NEW" description="O nice, lets get it started" song="99 problems in react, but aint one!" />
-        <Video url="https://www.youtube.com/embed/l-_JUQIFEec" likes={100} shares={3324} messages={3432} channel="THIS IS SOMETHING NEW" description="O nice, lets get it started" song="99 problems in react, but aint one!" />
-        <Video url="https://www.youtube-nocookie.com/embed/UfGMj10wOzg?controls=0" likes={100} shares={3324} messages={3432} channel="THIS IS SOMETHING NEW" description="O nice, lets get it started" song="99 problems in react, but aint one!" />
+          {videos.map(({url, channel, description, song, likes, messages, shares}) => (
+              <Video
+                url={url}
+                channel={channel}
+                description={description}
+                song={song}
+                likes={likes}
+                messages={messages}
+                shares={shares}
+              />
+          ))}
       </div>
     </div>
   );
