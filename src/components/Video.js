@@ -1,5 +1,7 @@
 import React, {useRef, useState} from 'react';
 import "./styles/Video.css";
+import VideoFooter from "./VideoFooter";
+import VideoSidebar from "./VideoSidebar";
 
 const Video = () => {
 
@@ -26,6 +28,10 @@ const Video = () => {
                     allowFullScreen>
 
             </iframe>
+
+            <VideoSidebar />
+            <VideoFooter />
+
         </div>
     );
 };
