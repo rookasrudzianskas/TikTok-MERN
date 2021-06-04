@@ -29,8 +29,8 @@ const Video = () => {
 
             </iframe>
 
-            <VideoSidebar />
-            <VideoFooter />
+            <VideoSidebar likes={111} shares={2343} messages={234} />
+            <VideoFooter channel="@rookas" description="This is something new" song="A happy song" />
 
         </div>
     );
