@@ -3,7 +3,7 @@ import "./styles/VideoSidebar.css";
 
 const VideoSidebar = () => {
     return (
-        <div>
+        <div className="videoSidebar">
 
         </div>
     );
